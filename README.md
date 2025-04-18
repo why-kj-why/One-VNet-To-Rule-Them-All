@@ -31,7 +31,7 @@ Now that you have attained a surface-level understanding of how each Azure resou
 
 1. Sign-in to the Azure Portal and press the **+Create a Resource** button on the top-left of your Dashboard
 2. Type **Resource group** in the search bar and press **Create**
-3. In the **Basics** tab, select the desired **Subscription**, enter a suitable **Name** for your Azure Resource Group and select its **Region** of operation ![Screenshot](https://hackmd.io/_uploads/BJGmycARyl.png)
+3. In the **Basics** tab, select the desired **Subscription**, enter a suitable **Name** for your Azure Resource Group and select its **Region** of operation ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/resource-group-3.png)
 
 4. Add any **Tags** you may deem necessary and press **Review+Create**
 5. Azure will run a quick validation before allowing you to create your Resource Group
