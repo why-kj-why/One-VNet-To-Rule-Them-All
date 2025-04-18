@@ -85,11 +85,11 @@ Now that you have attained a surface-level understanding of how each Azure resou
 2. Type **Virtual Machine** in the search bar and press **Create**
 3. In the **Basics** tab, confirm the **Subscription**, **Resource Group** and the **Region** of operation before entering a suitable **Name** for your Virtual Machine and setting the Availability options as **Availability Zones**
 4. When selecting the **Image**, click on **See all images**, type **Ubuntu 24.04 LTS** in the search bar, select the **Ubuntu Server 24.04 LTS - x64 Gen2** image provided by Canonical and set the **Size** to **Standard_DS1_v2**
-5. Select **Password** as the **Authentication type** and set the **Username** and **Password** for your Linux Virtual Machine, before selecting **HTTP (80)**, **HTTPS (443)** and **SSH (22)** as the permitted **Inbound ports** for this resource ![Screenshot]()
+5. Select **Password** as the **Authentication type** and set the **Username** and **Password** for your Linux Virtual Machine, before selecting **HTTP (80)**, **HTTPS (443)** and **SSH (22)** as the permitted **Inbound ports** for this resource ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-neo-5.png)
 
 6. In the **Disks** tab, select **Image default (30 GiB)** as the **OS disk size**, **Premium SSD (locally-redundant storage)** as the **OS disk type** and make sure the **Delete with VM** checkbox is checked
 7. In the **Networking** tab, select the **Virtual Network** created earlier, then select the **default subnet** as the **Subnet** before pressing **Create new** in the **Public IP** setting and keeping **None** as the **Load balancing option**
-8. The final Networking configuration of your Virtual Machine should look like this: ![Screenshot]()
+8. The final Networking configuration of your Virtual Machine should look like this: ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-neo-8.png)
 
 9. In the **Management** tab, make sure that all of the checkboxes are left unchecked, before proceeding to the **Monitoring** tab, where the default settings can be used
 10. Since you do not need any **Extensions** or **Applications**, you can leave the **Advanced** tab unchanged
@@ -154,10 +154,10 @@ $ sudo ss -tuln | grep 7474
 
 24. Minimise the Cloud Shell and navigate to the **Network settings** tab under the **Networking** section of your Linux Virtual Machine, before scrolling down to the **Rules** section and pressing the **+Create port rule** button on the right-hand side of the window and selecting **Inbound port rule**
 25. Select **Neo4j** in the **Service** dropdown menu, confirm that the **Destination port** is set as **7474** and press **Add**
-26. Repeat this process by selecting **Custom** in the **Service** dropdown menu and entering the desired ports, such that your Linux Virtual Machine's final Inbound port rules look like this: ![Screenshot]()
+26. Repeat this process by selecting **Custom** in the **Service** dropdown menu and entering the desired ports, such that your Linux Virtual Machine's final Inbound port rules look like this: ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-neo-26.png)
 27. Search for **http://virtual-machine-IP-address:7474** in your Browser to open the Neo4j web interface and enter neo4j as both the **Username** and the **Password**, before setting up a new password for your Neo4j instance
-28. The Neo4j web interface should look like either one of the following images: ![Screenshot](https://hackmd.io/_uploads/S1rQ351klx.png)
-![Screenshot](https://hackmd.io/_uploads/rk6Q2cyyge.png)
+28. The Neo4j web interface should look like either one of the following images: ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-neo-28-1.png)
+![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-neo-28-2.png)
 
 
 #### Container Registry
@@ -176,12 +176,11 @@ $ sudo ss -tuln | grep 7474
 1. Navigate to the Azure Resource Group created earlier and press the **+Create** button on the top-left of the Overview tab
 2. Type **Function App** in the search bar and press **Create**
 3. Select App Service as the Hosting Option, and confirm the **Subscription** and **Resource Group** before giving the resource a suitable **Name** in the **Basics** tab
-4. Select the **Region** of operation that has been used for all the other resources in your resource group and create a new **App Service Plan** with its **Pricing plan** set as **Premium V3 P1V3** (Function Apps created in the future can also choose this App Service Plan) ![Screenshot](https://hackmd.io/_uploads/HyZMLhACJg.png)
+4. Select the **Region** of operation that has been used for all the other resources in your resource group and create a new **App Service Plan** with its **Pricing plan** set as **Premium V3 P1V3** (Function Apps created in the future can also choose this App Service Plan) ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/func-app-4.png)
  
 5. In the **Storage** tab, create a new **Storage account** if this is the first Function App you are registering in your resource group, otherwise simply use the one you have already made since the Storage account you create will only be accessible by resources in the same Virtual Network
-6. In the **Networking** tab, **Disable (select Off) public access** and **Enable (select On) virtual network integration**, select the **Virtual Network created earlier** and **Disable (select Off) private networks** under the **Inbound access** section ![Screenshot](https://hackmd.io/_uploads/H1d7dhCA1x.png)
-
-7. Under the **Outbound access** section, **Enable (select On) VNet integration** and select the **subnet dedicated to Azure Function Apps** as the **Outbound subnet**, such that your final configuration should look like so: ![Screenshot](https://hackmd.io/_uploads/rJeAdnRRkx.png)
+6. In the **Networking** tab, **Disable (select Off) public access** and **Enable (select On) virtual network integration**, select the **Virtual Network created earlier** and **Disable (select Off) private networks** under the **Inbound access** section ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/func-app-6.png)
+7. Under the **Outbound access** section, **Enable (select On) VNet integration** and select the **subnet dedicated to Azure Function Apps** as the **Outbound subnet**, such that your final configuration should look like so: ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/func-app-7.png)
 
 8. In the **Monitoring** tab, **Enable (select Yes) Application Insights** and create a new **Application Insights** resource in the same **Region**, since it would help you in debugging the Function App
 9. Leave the default setting in the **Durable Functions** tab, add any **Tags** you may deem necessary and press **Review+Create**
@@ -189,9 +188,9 @@ $ sudo ss -tuln | grep 7474
 11. Once your Function App has been registered, navigate to the **Configration** tab in its **Settings** section, select **General settings** and press **On** on the **SCM Basic Auth Publishing Credentials** setting
 12. Proceed to the **Networking** tab in your Function App's **Settings** section and click on the **Private endpoints** hyperlink under the **Inbound traffic configuration** section
 13. Press the **+Add** button on the top-left of the **Private Endpoint connections** window and then select **Express**
-14. Give a suitable **Name** to the private endpoint, confirm your **Subscription**, select the **Virtual Network** created earlier, select the **subnet dedicated to Private Endpoints** as the **Subnet** and choose **Yes** to **Integrate with private DNS Zone** before pressing **OK** ![Screenshot](https://hackmd.io/_uploads/B1IbahRAyx.png)
+14. Give a suitable **Name** to the private endpoint, confirm your **Subscription**, select the **Virtual Network** created earlier, select the **subnet dedicated to Private Endpoints** as the **Subnet** and choose **Yes** to **Integrate with private DNS Zone** before pressing **OK** ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/func-app-14.png)
 
-15. After these changes, the Networking configuration of your Azure Function App should like this: ![Screenshot](https://hackmd.io/_uploads/Hke2phCRJe.png)
+15. After these changes, the Networking configuration of your Azure Function App should like this: ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/func-app-15.png)
 
 
 ## Conclusion
