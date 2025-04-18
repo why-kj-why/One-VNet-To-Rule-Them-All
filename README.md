@@ -41,37 +41,36 @@ Now that you have attained a surface-level understanding of how each Azure resou
 
 1. Navigate to the Azure Resource Group created earlier and press the **+Create** button on the top-left of the Overview tab
 2. Type **Virtual Network** in the search bar and press **Create**
-3. In the **Basics** tab, confirm the **Subscription**, **Resource Group** and the **Region** of operation before entering a suitable **Name** for your Virtual Network ![Screenshot](https://hackmd.io/_uploads/HkL_UoRR1l.png)
+3. In the **Basics** tab, confirm the **Subscription**, **Resource Group** and the **Region** of operation before entering a suitable **Name** for your Virtual Network ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vnet-3.png)
 
 4. In the **Security** tab, leave all checkboxes unchecked and proceed
 5. In the **IP addresses** tab, you will notice that an **address space** has already been created with a **default subnet** present
 6. Press the **+Add a subnet** button and enter a suitable **Name** for this subnet in the window that opens on the right-hand side of the window
-7. For a general-purpose subnet (like the one dedicated to an SQL Server) the **Size** should be set to **/24** ![Screenshot](https://hackmd.io/_uploads/rJRewj0CJg.png)
+7. For a general-purpose subnet (like the one dedicated to an SQL Server) the **Size** should be set to **/24** ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vnet-7.png)
 
-8. **Create** and name a new Network Security Group for this subnet and select the **Network Security Groups** option in the **Private endpoint network policy** dropdown before pressing **Add** ![Screenshot](https://hackmd.io/_uploads/rJoZwj0R1e.png)
+8. **Create** and name a new Network Security Group for this subnet and select the **Network Security Groups** option in the **Private endpoint network policy** dropdown before pressing **Add** ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vnet-8.png)
 
 9. Repeat step 6 to step 8 for a subnet dedicated to Azure Function Apps, but with **Size** set to **/27**
 10. Add any **Tags** you may deem necessary and press **Review+Create**
 11. Azure will run a quick validation before allowing you to create your Virtual Network
 12. Once the Virtual Network resource has been registered, navigate to its **Subnets** tab under the **Settings** section of the left-hand side toolbar
 13. Press the **+Subnet** button to add a new subnet dedicated to Private Endpoints, with **Size** set to **/24** and **Private endpoint network policy** set to **Disabled** (since a new Network Security Group is not necessary)
-14. The final subnet configuration of your Virtual Network should look like this: ![Screenshot](https://hackmd.io/_uploads/HklE_iACJx.png)
+14. The final subnet configuration of your Virtual Network should look like this: ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vnet-14.png)
 
 
 #### Virtual Machine (SQL Server)
 
 1. Navigate to the Azure Resource Group created earlier and press the **+Create** button on the top-left of the Overview tab
 2. Type **Virtual Machine** in the search bar and press **Create**
-3. In the **Basics** tab, confirm the **Subscription**, **Resource Group** and the **Region** of operation before entering a suitable **Name** for your Virtual Machine and setting the Availability options as **Availability Zones** ![Screenshot](https://hackmd.io/_uploads/rkU8toA0kx.png)
+3. In the **Basics** tab, confirm the **Subscription**, **Resource Group** and the **Region** of operation before entering a suitable **Name** for your Virtual Machine and setting the Availability options as **Availability Zones** ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-sql-3.png)
 
-4. When selecting the **Image**, click on **See all images**, type **SQL Server 2019** in the search bar, select the **Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - x64 Gen 2** image and set the **Size** to **Standard_B2s** ![Screenshot](https://hackmd.io/_uploads/SkvSisA0kl.png)
+4. When selecting the **Image**, click on **See all images**, type **SQL Server 2019** in the search bar, select the **Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - x64 Gen 2** image and set the **Size** to **Standard_B2s** ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-sql-4.png)
 
-5. Configure the **Username** and **Password** for your Virtual Machine and select **SSH (22)** and **RDP (3389**) in the **Select inbound ports** setting ![Screenshot](https://hackmd.io/_uploads/HJe8oi0C1e.png)
+5. Configure the **Username** and **Password** for your Virtual Machine and select **SSH (22)** and **RDP (3389**) in the **Select inbound ports** setting ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-sql-5.png)
 
 6. In the **Disks** tab, select **Image default (127 GiB)** as the **OS disk size**, **Premium SSD (locally-redundant storage)** as the **OS disk type** and make sure the **Delete with VM** checkbox is checked
 7. In the **Networking** tab, select the **Virtual Network** created earlier, then select the **default subnet** as the **Subnet** before pressing **Create new** in the **Public IP** setting and keeping **None** as the **Load balancing option**
-8. The final Networking configuration of your Virtual Machine should look like this: ![Screenshot](https://hackmd.io/_uploads/B1rT6o00Jx.png)
- 
+8. The final Networking configuration of your Virtual Machine should look like this: ![Screenshot](https://github.com/why-kj-why/One-VNet-To-Rule-Them-All/blob/main/manual-assets/vm-sql-8.png)
 9. In the **Management** tab, make sure that all of the checkboxes are left unchecked, before proceeding to the **Monitoring** tab, where the default settings can be used
 10. Since you do not need any **Extensions** or **Applications**, you can leave the **Advanced** tab unchanged
 11. In the **SQL Server settings** tab, make sure the **SQL connectivity** setting is set to **Private (within Virtual Network)** and the **Port** is set to **1433**, before selecting **Enable** on the **SQL Authentication** setting, which will automatically choose the Username and Password you assigned to this Virtual Machine
@@ -86,11 +85,11 @@ Now that you have attained a surface-level understanding of how each Azure resou
 2. Type **Virtual Machine** in the search bar and press **Create**
 3. In the **Basics** tab, confirm the **Subscription**, **Resource Group** and the **Region** of operation before entering a suitable **Name** for your Virtual Machine and setting the Availability options as **Availability Zones**
 4. When selecting the **Image**, click on **See all images**, type **Ubuntu 24.04 LTS** in the search bar, select the **Ubuntu Server 24.04 LTS - x64 Gen2** image provided by Canonical and set the **Size** to **Standard_DS1_v2**
-5. Select **Password** as the **Authentication type** and set the **Username** and **Password** for your Linux Virtual Machine, before selecting **HTTP (80)**, **HTTPS (443)** and **SSH (22)** as the permitted **Inbound ports** for this resource ![Screenshot](https://hackmd.io/_uploads/BkujGuykgg.png)
+5. Select **Password** as the **Authentication type** and set the **Username** and **Password** for your Linux Virtual Machine, before selecting **HTTP (80)**, **HTTPS (443)** and **SSH (22)** as the permitted **Inbound ports** for this resource ![Screenshot]()
 
 6. In the **Disks** tab, select **Image default (30 GiB)** as the **OS disk size**, **Premium SSD (locally-redundant storage)** as the **OS disk type** and make sure the **Delete with VM** checkbox is checked
 7. In the **Networking** tab, select the **Virtual Network** created earlier, then select the **default subnet** as the **Subnet** before pressing **Create new** in the **Public IP** setting and keeping **None** as the **Load balancing option**
-8. The final Networking configuration of your Virtual Machine should look like this: ![Screenshot](https://hackmd.io/_uploads/HJU3EO1yxx.png)
+8. The final Networking configuration of your Virtual Machine should look like this: ![Screenshot]()
 
 9. In the **Management** tab, make sure that all of the checkboxes are left unchecked, before proceeding to the **Monitoring** tab, where the default settings can be used
 10. Since you do not need any **Extensions** or **Applications**, you can leave the **Advanced** tab unchanged
@@ -155,7 +154,7 @@ $ sudo ss -tuln | grep 7474
 
 24. Minimise the Cloud Shell and navigate to the **Network settings** tab under the **Networking** section of your Linux Virtual Machine, before scrolling down to the **Rules** section and pressing the **+Create port rule** button on the right-hand side of the window and selecting **Inbound port rule**
 25. Select **Neo4j** in the **Service** dropdown menu, confirm that the **Destination port** is set as **7474** and press **Add**
-26. Repeat this process by selecting **Custom** in the **Service** dropdown menu and entering the desired ports, such that your Linux Virtual Machine's final Inbound port rules look like this: ![Screenshot](https://hackmd.io/_uploads/HJgD5q1Jex.png)
+26. Repeat this process by selecting **Custom** in the **Service** dropdown menu and entering the desired ports, such that your Linux Virtual Machine's final Inbound port rules look like this: ![Screenshot]()
 27. Search for **http://virtual-machine-IP-address:7474** in your Browser to open the Neo4j web interface and enter neo4j as both the **Username** and the **Password**, before setting up a new password for your Neo4j instance
 28. The Neo4j web interface should look like either one of the following images: ![Screenshot](https://hackmd.io/_uploads/S1rQ351klx.png)
 ![Screenshot](https://hackmd.io/_uploads/rk6Q2cyyge.png)
